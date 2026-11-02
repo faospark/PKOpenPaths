@@ -12,6 +12,10 @@ A BepInEx mod for **Suikoden I & II HD Remaster** that opens blocked shortcuts a
   - **`vg15` (Room 0)**: Clears the large rock pile blocking the tunnel by repositioning boundary rocks and hiding the obstructing rocks (`disp = 0`, `ozok = 0`).
   - **`vg02` (Room 2)**: Adjusts the barrier hitboxes near the mine shafts to open unobstructed walking corridors.
 
+- **Forest Village Armor Shop Door (`ve02`)**:
+  - Unlocks the exterior door to the Armor Shop in Forest Village (`ve02`) early.
+  - Neutralizes the late-game Greenhill liberation story flag requirement (Story Flag 114 Bit 4) that normally blocks the entrance with `"Closed."`, allowing immediate access to the Armor Shop (Shop 11) and Connell at any point in the game.
+
 ## Configuration
 
 Configuration is located at `BepInEx/config/faospark.pkopenpaths.cfg` after the first launch:
@@ -30,6 +34,13 @@ EnableCaveOfTheWindSolved = true
 # Setting type: Boolean
 # Default value: true
 EnableTintoMinesShortcuts = true
+
+[Suikoden 2 Forest Village]
+
+## Unlocks the exterior door to the Armor Shop in Forest Village (ve02) early, removing the late-game Greenhill liberation story flag requirement.
+# Setting type: Boolean
+# Default value: true
+EnableForestVillageArmorShopUnlocked = true
 ```
 
 ## How It Works

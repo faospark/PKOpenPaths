@@ -12,6 +12,9 @@ public sealed class ModConfiguration
     // Suikoden 2 Tinto Mines Shortcuts
     public ConfigEntry<bool> EnableTintoMinesShortcuts { get; private set; }
 
+    // Suikoden 2 Forest Village Armor Shop Door
+    public ConfigEntry<bool> EnableForestVillageArmorShopUnlocked { get; private set; }
+
     public ModConfiguration(ConfigFile config)
     {
         _config = config;
@@ -31,6 +34,13 @@ public sealed class ModConfiguration
             "EnableTintoMinesShortcuts",
             true,
             "Removes rock blockages and barrier triggers in Tinto Mines (vg02, vg15) to open convenient shortcuts."
+        );
+
+        EnableForestVillageArmorShopUnlocked = _config.Bind(
+            "Suikoden 2 Forest Village",
+            "EnableForestVillageArmorShopUnlocked",
+            true,
+            "Unlocks the exterior door to the Armor Shop in Forest Village (ve02) early, removing the late-game Greenhill liberation story flag requirement."
         );
     }
 }

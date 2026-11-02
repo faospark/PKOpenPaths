@@ -41,6 +41,13 @@ public class Plugin : BasePlugin
             TintoMinesPatch.Initialize(harmony);
         }
 
+        // Forest Village Armor Shop Door
+        if (Config.EnableForestVillageArmorShopUnlocked.Value)
+        {
+            Log.LogInfo("Registering Forest Village Armor Shop door unlock patch...");
+            ForestVillageArmorShopPatch.Initialize(harmony);
+        }
+
         Log.LogInfo("PKOpenPaths loaded successfully!");
     }
 }
