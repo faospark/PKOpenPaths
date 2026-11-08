@@ -1,4 +1,4 @@
-# PKOpenPaths
+# P.K. - Open Paths
 
 A BepInEx mod for **Suikoden I & II HD Remaster** that opens blocked shortcuts and auto-solves environmental obstacles (such as the Cave of the Wind boulder wind-puzzle and Tinto Mines shortcuts) using safe, non-destructive in-memory byte patching on map load (`MACHICON.EventInit`).
 
@@ -54,4 +54,22 @@ Instead of distributing raw modified Unity `.bundle` files or JSON files that br
 
 For an in-depth breakdown of the dual-engine architecture (PS1 2D simulation vs. Unity HD visual layer) and how HD "ghost" textures are handled, see:
 - [HD Visual Layer & Texture Sync Research](Documentation/hd_texture_sync_and_ghost_object_resolution.md)
+
+---
+
+## Installation
+
+- **Prerequisite**: [BepInEx 6.0 (Unity IL2CPP x64)](https://github.com/BepInEx/BepInEx/releases/download/v6.0.0-pre.2/BepInEx-Unity.IL2CPP-win-x64-6.0.0-pre.2.zip) installed in your game root directory.
+- **Install**: Extract the release ZIP directly into your game's root directory (or place `PKOpenPaths.dll` into `BepInEx/plugins/`).
+- **Verify**: Launch the game; `BepInEx/LogOutput.log` will confirm `[PKOpenPaths] loaded successfully!`.
+
+---
+
+## Credits & Acknowledgments
+
+- **[d3xMachina](https://github.com/d3xMachina/Suikoden-Fix)**: Creator of [Suikoden-Fix](https://github.com/d3xMachina/Suikoden-Fix). Bootstrapped the foundational BepInEx IL2CPP implementation and provided early inspiration for Remaster modding.
+- **[asilverthorn](https://github.com/asilverthorn/suikoden_ref)**: Creator of [suikoden_ref](https://github.com/asilverthorn/suikoden_ref). Invaluable early reference tables, internal IDs, and save structure research.
+- **[faospark](https://github.com/faospark)**: Primary Author & Lead Researcher.
+- **Moogles & Mods Discord Community**: For ongoing support, research, collaboration, and keeping the Suikoden modding scene thriving. Join us on the [Moogles & Mods Discord](https://discord.com/invite/bSnpVBV).
+- **Framework**: [BepInEx](https://github.com/BepInEx/BepInEx) & [HarmonyX](https://github.com/BepInEx/HarmonyX).
 
