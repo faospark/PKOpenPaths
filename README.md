@@ -1,4 +1,4 @@
-# P.K. - Open Paths
+﻿# P.K. - Open Paths
 
 A BepInEx mod for **Suikoden I & II HD Remaster** that opens blocked shortcuts and auto-solves environmental obstacles (such as the Cave of the Wind boulder wind-puzzle and Tinto Mines shortcuts) using safe, non-destructive in-memory byte patching on map load (`MACHICON.EventInit`).
 
@@ -73,3 +73,8 @@ For an in-depth breakdown of the dual-engine architecture (PS1 2D simulation vs.
 - **Moogles & Mods Discord Community**: For ongoing support, research, collaboration, and keeping the Suikoden modding scene thriving. Join us on the [Moogles & Mods Discord](https://discord.com/invite/bSnpVBV).
 - **Framework**: [BepInEx](https://github.com/BepInEx/BepInEx) & [HarmonyX](https://github.com/BepInEx/HarmonyX).
 
+---
+
+## License
+
+Distributed under the [MIT License](LICENSE).
