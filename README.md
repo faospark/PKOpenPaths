@@ -1,80 +1,48 @@
 ﻿# P.K. - Open Paths
 
-A BepInEx mod for **Suikoden I & II HD Remaster** that opens blocked shortcuts and auto-solves environmental obstacles (such as the Cave of the Wind boulder wind-puzzle and Tinto Mines shortcuts) using safe, non-destructive in-memory byte patching on map load (`MACHICON.EventInit`).
+**By [faospark](https://github.com/faospark)**
+
+A **BepInEx 6 (IL2CPP)** mod for **Suikoden I & II HD Remaster** that opens blocked shortcuts and auto-solves environmental obstacles in **Suikoden II** using safe, in-memory map patching on load (`MACHICON.EventInit`).
 
 ## Features
 
-- **Cave of the Wind Solved (`vd06`)**:
-  - Automatically positions all pushable boulders (`ano = 6`, `otyp = 3`) across rooms 8, 9, 10, and 11 into their wind-blocking positions upon map load.
-  - Allows immediate traversal without manual boulder pushing while keeping all story cutscenes, chest triggers, and Kahn Marley recruitment sequences completely intact.
+- **Cave of the Wind Solved (`EnableCaveOfTheWindSolved`)**: Automatically places all pushable wind-puzzle boulders in `vd06` (rooms 8–11) into their wind-blocking positions while preserving story cutscenes, chests, and Kahn Marley's recruitment.
+- **Tinto Mines Shortcuts (`EnableTintoMinesShortcuts`)**: Clears obstructing rock piles and barrier hitboxes in `vg15` (room 0) and `vg02` (room 2) for unobstructed traversal.
+- **Forest Village Armor Shop Unlocked (`EnableForestVillageArmorShopUnlocked`)**: Unlocks the exterior Armor Shop door in Forest Village (`ve02`) early without waiting for late-game Greenhill liberation.
 
-- **Tinto Mines Shortcuts (`vg02`, `vg15`)**:
-  - **`vg15` (Room 0)**: Clears the large rock pile blocking the tunnel by repositioning boundary rocks and hiding the obstructing rocks (`disp = 0`, `ozok = 0`).
-  - **`vg02` (Room 2)**: Adjusts the barrier hitboxes near the mine shafts to open unobstructed walking corridors.
+> For the dual-engine architecture and HD ghost-texture notes, see [Documentation/hd_texture_sync_and_ghost_object_resolution.md](Documentation/hd_texture_sync_and_ghost_object_resolution.md).
 
-- **Forest Village Armor Shop Door (`ve02`)**:
-  - Unlocks the exterior door to the Armor Shop in Forest Village (`ve02`) early.
-  - Neutralizes the late-game Greenhill liberation story flag requirement (Story Flag 114 Bit 4) that normally blocks the entrance with `"Closed."`, allowing immediate access to the Armor Shop (Shop 11) and Connell at any point in the game.
-
-## Configuration
-
-Configuration is located at `BepInEx/config/faospark.pkopenpaths.cfg` after the first launch:
+## Configuration (`BepInEx/config/faospark.pkopenpaths.cfg`)
 
 ```ini
 [Suikoden 2 Cave of the Wind]
-
-## Automatically places the puzzle boulders in Cave of the Wind (vd06) into their wind-blocking positions, allowing immediate passage without pushing boulders.
-# Setting type: Boolean
-# Default value: true
-EnableCaveOfTheWindSolved = true
+EnableCaveOfTheWindSolved = true             # Auto-place wind-blocking boulders in vd06
 
 [Suikoden 2 Tinto Mines]
-
-## Removes rock blockages and barrier triggers in Tinto Mines (vg02, vg15) to open convenient shortcuts.
-# Setting type: Boolean
-# Default value: true
-EnableTintoMinesShortcuts = true
+EnableTintoMinesShortcuts = true             # Clear rock blockages & barrier hitboxes in vg02/vg15
 
 [Suikoden 2 Forest Village]
-
-## Unlocks the exterior door to the Armor Shop in Forest Village (ve02) early, removing the late-game Greenhill liberation story flag requirement.
-# Setting type: Boolean
-# Default value: true
-EnableForestVillageArmorShopUnlocked = true
+EnableForestVillageArmorShopUnlocked = true  # Unlock Forest Village (ve02) Armor Shop door early
 ```
 
-## How It Works
+## Requirements
 
-Instead of distributing raw modified Unity `.bundle` files or JSON files that break whenever the remaster updates and conflict with other mods, **PKOpenPaths** hooks `MACHICON.EventInit` via Harmony:
-1. Detects when the player transitions into a supported map (e.g. `vd06`).
-2. Directly patches the deserialized map event data (`__result.mdat.eventdata.mapeventdat`) in memory before room rendering and actor spawning.
-3. Completely update-proof, conflict-free, and instantly toggleable.
-
-## Technical Architecture & HD Texture Research
-
-For an in-depth breakdown of the dual-engine architecture (PS1 2D simulation vs. Unity HD visual layer) and how HD "ghost" textures are handled, see:
-- [HD Visual Layer & Texture Sync Research](Documentation/hd_texture_sync_and_ghost_object_resolution.md)
-
----
+- **BepInEx 6.0.0-pre.2 IL2CPP**
+- **Suikoden I & II HD Remaster**
+- **Recommended:** [Suikoden Fix](https://github.com/d3xMachina/SuikodenFix) by d3xMachina
 
 ## Installation
 
-- **Prerequisite**: [BepInEx 6.0 (Unity IL2CPP x64)](https://github.com/BepInEx/BepInEx/releases/download/v6.0.0-pre.2/BepInEx-Unity.IL2CPP-win-x64-6.0.0-pre.2.zip) installed in your game root directory.
-- **Install**: Extract the release ZIP directly into your game's root directory (or place `PKOpenPaths.dll` into `BepInEx/plugins/`).
-- **Verify**: Launch the game; `BepInEx/LogOutput.log` will confirm `[PKOpenPaths] loaded successfully!`.
+1. Install [BepInEx 6.0 (Unity IL2CPP x64)](https://github.com/BepInEx/BepInEx/releases/download/v6.0.0-pre.2/BepInEx-Unity.IL2CPP-win-x64-6.0.0-pre.2.zip) into your game root directory.
+2. Place `PKOpenPaths.dll` into `BepInEx/plugins/`.
+3. Launch the game once to generate `BepInEx/config/faospark.pkopenpaths.cfg`.
 
----
+## Credits & License
 
-## Credits & Acknowledgments
-
-- **[d3xMachina](https://github.com/d3xMachina/Suikoden-Fix)**: Creator of [Suikoden-Fix](https://github.com/d3xMachina/Suikoden-Fix). Bootstrapped the foundational BepInEx IL2CPP implementation and provided early inspiration for Remaster modding.
-- **[asilverthorn](https://github.com/asilverthorn/suikoden_ref)**: Creator of [suikoden_ref](https://github.com/asilverthorn/suikoden_ref). Invaluable early reference tables, internal IDs, and save structure research.
-- **[faospark](https://github.com/faospark)**: Primary Author & Lead Researcher.
-- **Moogles & Mods Discord Community**: For ongoing support, research, collaboration, and keeping the Suikoden modding scene thriving. Join us on the [Moogles & Mods Discord](https://discord.com/invite/bSnpVBV).
-- **Framework**: [BepInEx](https://github.com/BepInEx/BepInEx) & [HarmonyX](https://github.com/BepInEx/HarmonyX).
-
----
-
-## License
+- **[faospark](https://github.com/faospark)** — Primary Author & Lead Researcher
+- **[d3xMachina](https://github.com/d3xMachina/Suikoden-Fix)** — Creator of Suikoden-Fix & BepInEx IL2CPP foundation
+- **[asilverthorn](https://github.com/asilverthorn/suikoden_ref)** — Reference tables, internal IDs, and save structure research
+- **Moogles & Mods Discord** — Community support & research ([Invite](https://discord.com/invite/bSnpVBV))
+- **Framework:** [BepInEx](https://github.com/BepInEx/BepInEx) & [HarmonyX](https://github.com/BepInEx/HarmonyX)
 
 Distributed under the [MIT License](LICENSE).
