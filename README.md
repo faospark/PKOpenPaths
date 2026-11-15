@@ -1,4 +1,4 @@
-﻿# P.K. - Open Paths
+# P.K. - Open Paths
 
 **By [faospark](https://github.com/faospark)**
 
@@ -8,7 +8,7 @@ A **BepInEx 6 (IL2CPP)** mod for **Suikoden I & II HD Remaster** that opens bloc
 
 - **Cave of the Wind Solved (`EnableCaveOfTheWindSolved`)**: Automatically places all pushable wind-puzzle boulders in `vd06` (rooms 8–11) into their wind-blocking positions while preserving story cutscenes, chests, and Kahn Marley's recruitment.
 - **Tinto Mines Shortcuts (`EnableTintoMinesShortcuts`)**: Clears obstructing rock piles and barrier hitboxes in `vg15` (room 0) and `vg02` (room 2) for unobstructed traversal.
-- **Forest Village Armor Shop Unlocked (`EnableForestVillageArmorShopUnlocked`)**: Unlocks the exterior Armor Shop door in Forest Village (`ve02`) early without waiting for late-game Greenhill liberation.
+- **Forest Village Armor Shop Unlocked (`EnableForestVillageArmorShopUnlocked`)**: Unlocks the exterior Armor Shop door in Forest Village (`ve02`) early without waiting for the first Greenhill mission.
 
 > For the dual-engine architecture and HD ghost-texture notes, see [Documentation/hd_texture_sync_and_ghost_object_resolution.md](Documentation/hd_texture_sync_and_ghost_object_resolution.md).
 

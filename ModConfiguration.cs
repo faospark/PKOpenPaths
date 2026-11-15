@@ -40,7 +40,7 @@ public sealed class ModConfiguration
             "Suikoden 2 Forest Village",
             "EnableForestVillageArmorShopUnlocked",
             true,
-            "Unlocks the exterior door to the Armor Shop in Forest Village (ve02) early, removing the late-game Greenhill liberation story flag requirement."
+            "Unlocks the exterior door to the Armor Shop in Forest Village (ve02) early, removing the first Greenhill mission story flag requirement."
         );
     }
 }
